@@ -1,0 +1,74 @@
+@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/inter.min.css");
+
+.main-container {
+  padding: 30px 30px 30px 30px;
+}
+
+.button{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: white;
+  width: 273px;
+  height: 70px;
+  border-radius: 60px;
+}
+
+.bg-image{
+  position: relative;
+  z-index:-1;
+}
+
+.main-elements-container{
+  position: absolute;
+  margin: 40px 60px 40px 60px;
+  display: flexbox;
+  
+}
+
+.upper-container{
+  display: flex;
+
+}
+
+.logo-box{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: white;
+  width: 114px;
+  height: 70px;
+  border-radius: 60px;
+  float: left;
+}
+
+.contact-us-text{
+  font-size: 20px;
+}
+
+.header-info-container{
+  align-self: flex-end;
+}
+
+.main-text{
+  margin: 0px 0px 0px 0px;
+  font-size: 120px;
+  color: white;
+}
+
+.info-text{
+  margin: 20px 0px 70px 0px;
+  font-size: 30px;
+  color: #f5f5f5;
+  max-width: 735px;
+}
+
+.start-button{
+  width: 273px;
+  height: 70px;
+}
+
+.start-button-text{
+  font-size: 20px;
+  color: #0F2450;
+}
