@@ -1,34 +1,33 @@
-@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/inter.min.css");
+
+@font-face {
+  font-family: "Inter";
+  src: url("./fonts/Inter-VariableFont_opsz\,wght.ttf") format("truetype"); 
+  font-style: normal; 
+  font-weight: normal; 
+}
 
 .main-container {
-  padding: 30px 30px 30px 30px;
-}
-
-.button{
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  background-color: white;
-  width: 273px;
-  height: 70px;
+  background-image: url(./img/background2.png);
+  background-size: cover;
   border-radius: 60px;
-}
-
-.bg-image{
-  position: relative;
-  z-index:-1;
+  margin: 30px 30px 30px 30px;
 }
 
 .main-elements-container{
-  position: absolute;
-  margin: 40px 60px 40px 60px;
-  display: flexbox;
-  
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 70px 90px 90px 90px ;
+  @media (max-width: 530px) {
+    padding: 30px 50px 50px 50px;
+  };
 }
 
 .upper-container{
   display: flex;
-
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo-box{
@@ -39,21 +38,55 @@
   width: 114px;
   height: 70px;
   border-radius: 60px;
-  float: left;
+}
+
+.contact-us-button{
+  width: 273px;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: white;
+  border-radius: 60px;
+  @media (max-width: 680px) {
+    width: 114px;
+  };
+}
+
+.contact-us-icon{
+  max-width: 44px;
+  @media (min-width: 680px) {
+    display: none;
+  };
 }
 
 .contact-us-text{
   font-size: 20px;
+  font-family: Inter;
+  @media (max-width: 680px) {
+    display: none;
+  };
 }
 
 .header-info-container{
-  align-self: flex-end;
+  align-self: flex-start;
+  padding-top: calc(18svh) ;
 }
 
 .main-text{
   margin: 0px 0px 0px 0px;
   font-size: 120px;
   color: white;
+  font-family: Inter;
+
+  @media (max-width: 830px) {
+    font-size: 60px;
+  };
+
+  @media (max-width: 530px) {
+    font-size: 40px;
+  };
+  
 }
 
 .info-text{
@@ -61,14 +94,28 @@
   font-size: 30px;
   color: #f5f5f5;
   max-width: 735px;
+  font-family: Inter;
+
+  @media (max-width: 830px) {
+    font-size: 15px;
+  };
+  @media (max-width: 530px) {
+    font-size: 10px;
+  };
 }
 
 .start-button{
   width: 273px;
-  height: 70px;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: white;
+  border-radius: 60px;
 }
 
 .start-button-text{
   font-size: 20px;
   color: #0F2450;
+  font-family: Inter;
 }
