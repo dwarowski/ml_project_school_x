@@ -22,6 +22,10 @@
   @media (max-width: 530px) {
     padding: 30px 50px 50px 50px;
   };
+
+  @media (max-width: 440px) {
+    padding: 25px 25px 25px 25px;
+  };
 }
 
 .upper-container{
@@ -70,7 +74,7 @@
 
 .header-info-container{
   align-self: flex-start;
-  padding-top: calc(18svh) ;
+  padding-top: calc(18svh*2.5) ;
 }
 
 .main-text{
@@ -82,11 +86,10 @@
   @media (max-width: 830px) {
     font-size: 60px;
   };
-
-  @media (max-width: 530px) {
-    font-size: 40px;
-  };
   
+  @media (max-width: 440px) {
+    font-size: 20px;
+  };
 }
 
 .info-text{
@@ -99,7 +102,8 @@
   @media (max-width: 830px) {
     font-size: 15px;
   };
-  @media (max-width: 530px) {
+
+  @media (max-width: 440px) {
     font-size: 10px;
   };
 }
@@ -112,6 +116,11 @@
   display: flex;
   background-color: white;
   border-radius: 60px;
+
+  @media (max-width: 440px) {
+    width: 273px;
+    height: 60px;
+  };
 }
 
 .start-button-text{
