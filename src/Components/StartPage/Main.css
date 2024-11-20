@@ -40,7 +40,7 @@
 }
 
 .main-container{
-  background-image: url(./img/background.png);
+  background-image: url(../img/background.png);
   background-size: cover;
   border-radius: 60px;
   margin: 30px 30px 30px 30px;
