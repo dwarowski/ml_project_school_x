@@ -1,10 +1,3 @@
-@font-face{
-  font-family: "Inter";
-  src: url("../fonts/Inter-VariableFont_opsz\,wght.ttf") format("truetype"); 
-  font-style: normal; 
-  font-weight: normal; 
-}
-
 @keyframes pulse {
   0% {
   transform: scale(.97);
@@ -21,10 +14,6 @@
         
 }
 
-.text{
-  font-family: Inter;
-}
-
 .button{
   width: 273px;
   height: 60px;
@@ -37,10 +26,11 @@
 
 .button:hover{
   background-color: rgb(228, 228, 228);
+  cursor: pointer;
 }
 
 .main-container{
-  background-image: url(../img/background.png);
+  background-image: url(../../assets/img/background.png);
   background-size: cover;
   border-radius: 60px;
   margin: 30px 30px 30px 30px;

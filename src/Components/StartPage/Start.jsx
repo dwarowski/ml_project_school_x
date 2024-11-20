@@ -1,6 +1,6 @@
-import logo from '../img/icon.svg'
-import contact from '../img/contact.png'
-import './Main.css';
+import logo from "../../assets/img/icon.svg"
+import contact from '../../assets/img/contact.png'
+import './Start.css';
 
 function App() {
   return (
