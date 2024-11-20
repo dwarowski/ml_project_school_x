@@ -27,8 +27,30 @@
 }
 
 .button:hover{
-  background-color: rgb(228, 228, 228);
+  background: #0F2450;
   cursor: pointer;
+}
+
+.button:hover .start-button-text{
+  color: #F5F5F5;
+  cursor: pointer;
+}
+
+.button:hover .contact-us-text{
+  color: #F5F5F5;
+  cursor: pointer;
+}
+
+.button:active{
+  background-color: #F5F5F5;
+}
+
+.button:active .start-button-text{
+  color: #0F2450;
+}
+
+.button:active .contact-us-text{
+  color: #0F2450;
 }
 
 .main-container{
