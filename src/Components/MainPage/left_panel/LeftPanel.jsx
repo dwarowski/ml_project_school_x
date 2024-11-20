@@ -1,0 +1,86 @@
+import "./LeftPanel.scss";
+import arrow from "../../../assets/arrow.svg";
+import close from "../../../assets/close.svg"
+import { useState, useEffect } from "react";
+
+export default function LeftPanel() {
+  // описываю все состояния
+  const [textAreaValue, setTextAreaValue] = useState("");
+  const [buttonText, setButtonText] = useState("Определить уровень текста");
+  const [showSvg, setShowSvg] = useState(true);
+  const [textHidden, setTextHidden] = useState(false); // состояние текста для анимации 
+  const [shake, setShake] = useState(false);
+
+
+  // обновляю состояние текста
+  const handleTextAreaChange = (event) => {
+    setTextAreaValue(event.target.value);
+  };
+
+  // слушатель textAreaValue
+  useEffect(() => {
+    if (textAreaValue.trim() === "" && buttonText !== "Определить уровень текста") {
+      setButtonText("Определить уровень текста");
+      // анимация
+      setTextHidden(true);
+      setTimeout(() => {
+        setTextHidden(false);
+        setShowSvg(true);
+      }, 500);
+    }
+  }, [textAreaValue, buttonText]);
+
+  const handleButtonClick = () => { // кнопка адаптировать текс
+    if (textAreaValue.trim() === "") {
+
+      setShake(true)
+      setTimeout(()=>{setShake(false)},700)
+
+    } else if (buttonText!==`Исходный уровень: ${"lvl"}`) {
+      // докрутить логику отпрвлять текст на back
+      // анимация
+      setTextHidden(true);
+      setShowSvg(false);
+      setTimeout(() => { // анимация появление текста, текст сначала полностью исчезает, а потом через 0.5с появляется
+        setButtonText(`Исходный уровень: ${"lvl"}`);
+        setTextHidden(false);
+      }, 500);
+    }
+  };
+
+  return (
+    <div className='panel_part'>
+      <div className={`fake_area ${shake ? "shake" : ""}`}>
+        <div className='title'>ТЕКСТ ДЛЯ АДАПТАЦИИ</div>
+        <div className='line'></div>
+        <div className="text-container">
+          <textarea
+            className={`text_block`}
+            onChange={handleTextAreaChange}
+            value={textAreaValue}
+            placeholder="Начните писать текст или вставьте его из буфера обмена"
+          ></textarea>
+          {textAreaValue && (
+            <button className="close-button" onClick={() => { setTextAreaValue(""); }}>
+              <img src={close} alt="" style={{ width: 14, height: 14, paddingTop: '2%', paddingRight: '2%' }} />
+            </button>
+          )}
+        </div>
+        <div className='lvl_define_block'>
+          <button className='lvl_define' onClick={handleButtonClick}>
+            <span className={`text ${textHidden ? 'hidden' : ''}`}>
+              {buttonText}
+            </span>
+            <img
+              src={arrow}
+              alt=""
+              className={`lvl_define_arrow ${showSvg ? '' : 'hidden'}`}
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+  
+}
+// TODO list: проверяться нажата ли кнопка слева
