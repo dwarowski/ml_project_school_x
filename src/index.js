@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Start/>
-    {/* <MainPage/> */}
+    <MainPage/>
   </React.StrictMode>
 );
 
