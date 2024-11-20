@@ -12,12 +12,12 @@ function App() {
           </div>
           <div className="button contact-us-button">
             <img src={contact} className="contact-us-icon" alt='contact-us'></img>
-            <p className='contact-us-text'>Связаться с нами</p>
+            <p className='text contact-us-text'>Связаться с нами</p>
           </div>
         </div>
         <div className="header-info-container">
-          <p className="main-text">Адаптация текстов</p>
-          <p className="info-text">Сервис для адаптации текстов под уровни CEFR. Быстро и легко преобразуйте тексты для нужного уровня сложности</p>
+          <p className="text main-text">Адаптация текстов</p>
+          <p className="text info-text">Сервис для адаптации текстов под уровни CEFR. Быстро и легко преобразуйте тексты для нужного уровня сложности</p>
           <div className="button start-button">
             <p className="text start-button-text">Начать работу</p>
           </div>
