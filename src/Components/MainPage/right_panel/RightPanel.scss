@@ -1,0 +1,70 @@
+.panel_part{
+  
+    height: 100%;
+    width: 47%;
+    // левая панель
+    
+    .fake_area{
+      background: #FFFF;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      
+  
+      border-radius: 4svh;
+    }
+
+      .line{
+       
+        border-top: 2px solid #F5F5F5;
+        
+      }
+
+      .read-container{
+        height: 100%;
+        display: flex;
+        box-sizing: border-box;
+        flex-direction: column;
+
+        justify-content: space-around;
+        .basic-text{
+          color: rgba(113, 113, 113, 1);
+          padding: 0 5%;
+          height: 50%;
+          
+          font-family: Inter;
+          font-size: 50px;
+          font-weight: 500;
+          line-height: 60.51px;
+          letter-spacing: -0.04em;
+          text-align: left;
+          text-underline-position: from-font;
+          text-decoration-skip-ink: none;
+          box-sizing: border-box;
+  
+  
+  
+        }
+        .read-only{
+          height: auto;
+  
+        }
+
+      }
+
+
+      
+      
+     
+     
+  }
+  .buttons_block{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;    
+    box-sizing: border-box;
+  }
