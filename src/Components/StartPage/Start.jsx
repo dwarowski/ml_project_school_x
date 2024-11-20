@@ -22,9 +22,8 @@ function App() {
             <p className="text start-button-text">Начать работу</p>
           </div>
         </div>
-      </div>   
+      </div>
     </div>
-    
   );
 }
 
