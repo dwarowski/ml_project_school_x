@@ -2,6 +2,8 @@ import logo from "../../assets/img/icon.svg"
 import contact from '../../assets/img/contact.png'
 import './Start.css';
 
+import { Link } from 'react-router-dom';
+
 
 function App() {
   return (
@@ -19,9 +21,11 @@ function App() {
         <div className="header-info-container">
           <p className="main-text">Адаптация текстов</p>
           <p className="info-text">Сервис для адаптации текстов под уровни CEFR. Быстро и легко преобразуйте тексты для нужного уровня сложности</p>
-          <div className="button start-button">
-            <p className="text start-button-text">Начать работу</p>
-          </div>
+          <Link to="/main" style={{ all: 'unset' }}>
+            <div className="button start-button" >
+              <p className="text start-button-text">Начать работу</p>
+            </div>
+          </Link>
         </div>
       </div>   
     </div>
