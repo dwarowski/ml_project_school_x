@@ -19,7 +19,7 @@
 .button{
   width: 273px;
   height: 60px;
-  background-color: white;
+  background: white;
   border-radius: 60px;
   display: flex;
   align-items: center;
@@ -36,13 +36,12 @@
   cursor: pointer;
 }
 
-.button:active{
-  background-color: #F5F5F5;
+.button:hover .button-text{
+  color: #F5F5F5;
 }
 
-.button-text:hover{
-  color: #F5F5F5;
-  cursor: pointer;
+.button:active{
+  background-color: #F5F5F5;
 }
 
 .button-text:active {
