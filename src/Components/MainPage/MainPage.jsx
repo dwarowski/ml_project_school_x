@@ -21,7 +21,7 @@ function MainContent() {
     if (isButtonPressed) {
       setFullSizePanel(true);
     }
-  }, [isButtonPressed]); // Добавлены зависимости
+  }, [isButtonPressed]); 
 
   return (
     <div className="container">

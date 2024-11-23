@@ -71,7 +71,7 @@
 }
 
 @media (max-width: 1024px) {
-    .panel_part .basic-text { /* Увеличиваем специфичность */
+    .panel_part .basic-text { 
       font-size: 46px;
       height: 30%;
       line-height: normal;
@@ -92,7 +92,7 @@
     }
 }
 @media (max-width: 768px) {
-  .panel_part .basic-text { /* Увеличиваем специфичность */
+  .panel_part .basic-text { 
     font-size: 30px;
     height: 30%;
   }
