@@ -10,9 +10,6 @@
       padding: 1.5svh;
       border-radius: 100%;
       cursor: pointer;
-      
-
-    
     }
     .func_block{
       gap: 2svh;
@@ -25,7 +22,7 @@
       flex-wrap: nowrap;
       
       .contacts{
-  
+        color:#0F2450;
         background: #FFFF;
         padding: 1.5svh;
        
@@ -41,6 +38,7 @@
         text-decoration-skip-ink: none;
 
         cursor: pointer;
+        text-decoration: none;
   
         
       }

@@ -17,7 +17,7 @@ export default function Header(){
             <img src={acc} alt="" className='icon' />
             <img src={history} alt="" className='icon' />
 
-            <div className='contacts'>Связаться с нами</div>
+            <a className='contacts' href="https://telegram.me/GRIN_L" target="_blank" rel="noopener noreferrer" >Связаться с нами</a>
           </div>
 
       </div>

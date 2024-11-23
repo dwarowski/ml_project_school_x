@@ -2,14 +2,19 @@ import "./LeftPanel.scss";
 import arrow from "../../../assets/arrow.svg";
 import close from "../../../assets/close.svg"
 import { useState, useEffect } from "react";
+import { useAppContext } from "../AppContext";
 
 export default function LeftPanel() {
   // описываю все состояния
   const [textAreaValue, setTextAreaValue] = useState("");
-  const [buttonText, setButtonText] = useState("Определить уровень текста");
-  const [showSvg, setShowSvg] = useState(true);
+  const [buttonText, setButtonText] = useState("Определить уровень текста"); // состояние текста внутри кнопки
+  const [showSvg, setShowSvg] = useState(true); // показывать стрелочку или нет 
   const [textHidden, setTextHidden] = useState(false); // состояние текста для анимации 
-  const [shake, setShake] = useState(false);
+  const [shake, setShake] = useState(false); // состояние анимации 
+
+  const {activeLvlButtons, setIsButtonPressed} = useAppContext() // получаю из контекста 
+  const hasActiveButtonLvl = activeLvlButtons.some(button => button === true);
+
 
 
   // обновляю состояние текста
@@ -21,6 +26,7 @@ export default function LeftPanel() {
   useEffect(() => {
     if (textAreaValue.trim() === "" && buttonText !== "Определить уровень текста") {
       setButtonText("Определить уровень текста");
+
       // анимация
       setTextHidden(true);
       setTimeout(() => {
@@ -30,23 +36,27 @@ export default function LeftPanel() {
     }
   }, [textAreaValue, buttonText]);
 
-  const handleButtonClick = () => { // кнопка адаптировать текс
+  const handleButtonClick = () => {
     if (textAreaValue.trim() === "") {
-
-      setShake(true)
-      setTimeout(()=>{setShake(false)},700)
-
-    } else if (buttonText!==`Исходный уровень: ${"lvl"}`) {
-      // докрутить логику отпрвлять текст на back
-      // анимация
-      setTextHidden(true);
-      setShowSvg(false);
-      setTimeout(() => { // анимация появление текста, текст сначала полностью исчезает, а потом через 0.5с появляется
-        setButtonText(`Исходный уровень: ${"lvl"}`);
-        setTextHidden(false);
-      }, 500);
+        setShake(true);
+        setTimeout(() => { setShake(false); }, 700);
     }
-  };
+    if (hasActiveButtonLvl === false) { // не выбран уровень
+        setIsButtonPressed(true);
+        //возможна ошибка, быть аккуратнее
+
+    } else if (buttonText !== `Исходный уровень: ${"lvl"}` && hasActiveButtonLvl) {
+        // логика отправки текста на back
+        // анимация изменения текста в кнопке
+        setTextHidden(true);
+        setShowSvg(false);
+        setTimeout(() => {
+            setButtonText(`Исходный уровень: ${"lvl"}`);
+            setTextHidden(false);
+        }, 500);
+    }
+};
+
 
   return (
     <div className='panel_part'>
