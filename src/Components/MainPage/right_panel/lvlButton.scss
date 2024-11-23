@@ -31,5 +31,21 @@
         color: #F5F5F5;
     }
 }
+@media (max-width: 1024px) {
 
+    .lvl-button {
+        font-size: 16px;
+        line-height: 22px;
+
+
+        
+    }
+
+    
+}
+@media (max-width: 768px) {
+   .lvl-button{
+        padding: 1svh 1svh;
+   }
+}
 

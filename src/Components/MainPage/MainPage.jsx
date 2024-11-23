@@ -1,23 +1,36 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
 import './MainPage.scss';
-
 import Header from './header/header';
 import LeftPanel from './left_panel/LeftPanel';
 import RightPanel from './right_panel/RightPanel';
-import { AppProvider } from './AppContext';
+import { AppProvider, useAppContext } from './AppContext';
 
 function MainPage() {
   return (
     <AppProvider>
-      <div className="container">
-        <Header />
-        <div className='panel'>
-          <LeftPanel />
-          <RightPanel />
-        </div>
-      </div>
+      <MainContent />
     </AppProvider>
+  );
+}
+
+function MainContent() {
+  const { isButtonPressed } = useAppContext();
+  const [fullSizePanel, setFullSizePanel] = useState(false);
+
+  useEffect(() => {
+    if (isButtonPressed) {
+      setFullSizePanel(true);
+    }
+  }, [isButtonPressed]); // Добавлены зависимости
+
+  return (
+    <div className="container">
+      <Header />
+      <div className='panel' style={{ height: `${fullSizePanel ? "61%" : "41%"}` }}>
+        <LeftPanel />
+        <RightPanel />
+      </div>
+    </div>
   );
 }
 
