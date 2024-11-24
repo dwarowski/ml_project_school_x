@@ -10,7 +10,10 @@ export default function LeftPanel() {
   const [buttonText, setButtonText] = useState("Определить уровень текста"); // состояние текста внутри кнопки
   const [showSvg, setShowSvg] = useState(true); // показывать стрелочку или нет 
   const [textHidden, setTextHidden] = useState(false); // состояние текста для анимации 
-  const [shake, setShake] = useState(false); // состояние анимации 
+  const [shake, setShake] = useState(false); // состояние анимации
+
+  const [fullSizePanel, setFullSizePanel] = useState(false);
+
 
   const {activeLvlButtons, setIsButtonPressed} = useAppContext() // получаю из контекста 
   const hasActiveButtonLvl = activeLvlButtons.some(button => button === true);
@@ -37,6 +40,8 @@ export default function LeftPanel() {
   }, [textAreaValue, buttonText]);
 
   const handleButtonClick = () => {
+    setFullSizePanel(true)
+
     if (textAreaValue.trim() === "") {
         setShake(true);
         setTimeout(() => { setShake(false); }, 700);
@@ -63,7 +68,7 @@ export default function LeftPanel() {
       <div className={`fake_area ${shake ? "shake" : ""}`}>
         <div className='title'>ТЕКСТ ДЛЯ АДАПТАЦИИ</div>
         <div className='line'></div>
-        <div className="text-container">
+        <div className="text-container" style={{height: `${fullSizePanel? "70%":"66%"}`}}>
           <textarea
             className={`text_block`}
             onChange={handleTextAreaChange}

@@ -50,3 +50,14 @@
     }
   
   }
+  @media (max-width: 500px) {
+    .header .func_block .contacts {
+      font-size: 12px;
+      padding: 0.5svh;
+    }
+    .header .icon {
+      padding: 1qwsvh;
+      height: 18px;
+      width: 18px;
+    }
+  }

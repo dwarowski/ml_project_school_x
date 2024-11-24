@@ -46,6 +46,16 @@
 @media (max-width: 768px) {
    .lvl-button{
         padding: 1svh 1svh;
+        font-size: 14px;
+
+   }
+}
+@media (max-width: 500px){
+    .lvl-button{
+        padding: 0.5svh;
+        font-size: 10px;
+        width: 10%;
+
    }
 }
 
