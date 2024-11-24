@@ -1,7 +1,7 @@
 import "./LeftPanel.scss";
 import arrow from "../../../assets/arrow.svg";
-import close from "../../../assets/close.svg"
-import { useState, useEffect } from "react";
+import close from "../../../assets/close.svg";
+import { useState, useEffect, useCallback } from "react";
 import { useAppContext } from "../AppContext";
 
 export default function LeftPanel() {
@@ -11,72 +11,70 @@ export default function LeftPanel() {
   const [showSvg, setShowSvg] = useState(true); // показывать стрелочку или нет 
   const [textHidden, setTextHidden] = useState(false); // состояние текста для анимации 
   const [shake, setShake] = useState(false); // состояние анимации
-
   const [fullSizePanel, setFullSizePanel] = useState(false);
 
-
-  const {activeLvlButtons, setIsButtonPressed} = useAppContext() // получаю из контекста 
+  const { activeLvlButtons, setIsButtonPressed } = useAppContext(); // получаю из контекста 
   const hasActiveButtonLvl = activeLvlButtons.some(button => button === true);
-
-
 
   // обновляю состояние текста
   const handleTextAreaChange = (event) => {
     setTextAreaValue(event.target.value);
   };
 
+  const resetButtonText = useCallback(() => { // анимация изменения текста кнопки
+    setButtonText("Определить уровень текста");
+    setTextHidden(true);
+    setTimeout(() => {
+      setTextHidden(false);
+      setShowSvg(true);
+    }, 500);
+  }, []);
+
   // слушатель textAreaValue
   useEffect(() => {
     if (textAreaValue.trim() === "" && buttonText !== "Определить уровень текста") {
-      setButtonText("Определить уровень текста");
-
-      // анимация
-      setTextHidden(true);
-      setTimeout(() => {
-        setTextHidden(false);
-        setShowSvg(true);
-      }, 500);
+      resetButtonText();
     }
-  }, [textAreaValue, buttonText]);
+  }, [textAreaValue, buttonText, resetButtonText]);
 
   const handleButtonClick = () => {
-    setFullSizePanel(true)
+    setFullSizePanel(true);
+    setIsButtonPressed(true);
 
     if (textAreaValue.trim() === "") {
-        setShake(true);
-        setTimeout(() => { setShake(false); }, 700);
+      setShake(true);
+      setTimeout(() => setShake(false), 700);
+      return;
     }
     if (hasActiveButtonLvl === false) { // не выбран уровень
-        setIsButtonPressed(true);
-        //возможна ошибка, быть аккуратнее
-
+      setIsButtonPressed(true);
+      // возможна ошибка, быть аккуратнее
     } else if (buttonText !== `Исходный уровень: ${"lvl"}` && hasActiveButtonLvl) {
-        // логика отправки текста на back
-        // анимация изменения текста в кнопке
-        setTextHidden(true);
-        setShowSvg(false);
-        setTimeout(() => {
-            setButtonText(`Исходный уровень: ${"lvl"}`);
-            setTextHidden(false);
-        }, 500);
+      // логика отправки текста на back
+      // анимация изменения текста в кнопке
+      setTextHidden(true);
+      setShowSvg(false);
+      setTimeout(() => {
+        setButtonText(`Исходный уровень: ${"lvl"}`);
+        setTextHidden(false);
+      }, 500);
     }
-};
-
+  };
 
   return (
     <div className='panel_part'>
       <div className={`fake_area ${shake ? "shake" : ""}`}>
         <div className='title'>ТЕКСТ ДЛЯ АДАПТАЦИИ</div>
         <div className='line'></div>
-        <div className="text-container" style={{height: `${fullSizePanel? "70%":"66%"}`}}>
+        <div className="text-container" style={{ height: `${fullSizePanel ? "70%" : "66%"}` }}>
           <textarea
             className={`text_block`}
             onChange={handleTextAreaChange}
             value={textAreaValue}
             placeholder="Начните писать текст или вставьте его из буфера обмена"
-          ></textarea>
+          />
           {textAreaValue && (
-            <button className="close-button" onClick={() => { setTextAreaValue(""); }}>
+            <button className="close-button" onClick={() => setTextAreaValue("")}>
               <img src={close} alt="" style={{ width: 14, height: 14, paddingTop: '2%', paddingRight: '2%' }} />
             </button>
           )}
@@ -96,6 +94,6 @@ export default function LeftPanel() {
       </div>
     </div>
   );
-  
 }
+
 // TODO list: проверяться нажата ли кнопка слева

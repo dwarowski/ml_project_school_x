@@ -63,7 +63,8 @@
       }
       
       .text_block{
-        color:#717171;
+        color: #0F2450;//text
+
 
         
         padding: 0;
@@ -88,6 +89,9 @@
         
   
       }
+      .text_block::placeholder {
+        color: #717171; /* Цвет плейсхолдера */
+    }
       .close-button{
 
         padding-top: 3%;
@@ -151,9 +155,6 @@
       font-size: 16px;
       line-height: normal;
 
-
-      text-wrap: wrap;
-
    }
   }
   @media (max-width: 768px) {
@@ -166,14 +167,24 @@
 
    }
    .panel_part .text-container{
-    height: 66% !important;
+    height: 68% !important;
+   }
+   .panel_part .lvl_define_block {
+    display: flex;
+    justify-content: center;
+   }
+   .panel_part .lvl_define_block .lvl_define_arrow{
+    display: none !important;
    }
 
   }
-  @media (max-width: 500px){
+  @media (max-width: 550px){
+
     .panel_part .text-container{
-      height: 55% !important;
+      height: 62% !important;
      }
+
+    
 
   }
   @media (max-width: 425px) {
@@ -189,9 +200,7 @@
       font-size: 14px;
 
    }
-   .panel_part .lvl_define_block .lvl_define_arrow{
-    display: none !important;
-   }
+ 
 
   }
 
