@@ -61,8 +61,9 @@ export default function LeftPanel() {
     }
   };
   const closeButtonClick= ()=>{
-    setActiveLvlButtons()
-    return
+    setActiveLvlButtons(Array(6).fill(false))
+    setTextAreaValue("")
+    setStartLvlText(null)
   }
 
   return (
@@ -78,7 +79,7 @@ export default function LeftPanel() {
             placeholder="Начните писать текст или вставьте его из буфера обмена"
           />
           {textAreaValue && (
-            <button className="close-button" onClick={() => setTextAreaValue("")}>
+            <button className="close-button" onClick={() => closeButtonClick()}>
               <img src={close} alt="" style={{ width: 14, height: 14, paddingTop: '2%', paddingRight: '2%' }} />
             </button>
           )}

@@ -26,7 +26,7 @@ export default function RightPanel() {
                     <div className="basic-text"style={{display: `${showAdaptText? "none": ""}`}}>Выберите уровень<br />для адаптации</div>
                     <div className='title' style={{display: `${showAdaptText? "": "none"}`}}>АДАПТИРОВАННЫЙ ТЕКСТ</div>
                     <div className='line' style={{display: `${showAdaptText? "": "none"}`}}></div>
-                    <div className="text-container" style={{height: `${showAdaptText? "70%": "33.5%"}`}}>
+                    <div className="read-container" style={{height: `${showAdaptText? "70%": "33.5%"}`}}>
                       <div className="read-only" ></div>
                       <button className="copy-button">
                         <img src={copy} alt="" style={{display:`${showAdaptText? 'block':'none'}`}}/>

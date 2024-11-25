@@ -1,5 +1,4 @@
 .panel_part{
-  
     height: 100%;
     width: 49%;
     // левая панель
@@ -18,9 +17,8 @@
       height: 100%;
       width: 100%;
       box-sizing: border-box;
-      
-  
       border-radius: 4svh;
+
       &.shake { // анимация трясски
         animation: shake 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)//cubic-bezier помогает определить с какой скоростью будет рабоать анимация
       }
@@ -31,9 +29,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-
-
-        
         font-family: Inter;
         font-size: 16px;
         font-weight: 400;
@@ -42,15 +37,9 @@
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
         color: #717171;
-
-
-  
-  
       }
       .line{
-       
         border-top: 2px solid #F5F5F5;
-        
       }
       .text-container{
         width: 100%;
@@ -58,27 +47,19 @@
         display: flex;
         justify-content: space-between;
         align-items: self-start;
-        
-
       }
       
       .text_block{
         color: #0F2450;//text
-
-
-        
         padding: 0;
         outline: none; 
         resize: none;
         border: none;
         padding: 2%;
         padding-right: 0%;
-  
         width: 90%;
         height:100%;
-      
         box-sizing: border-box;
-
         font-family: Inter;
         font-size: 20px;
         font-weight: 400;
@@ -86,14 +67,12 @@
         text-align: left;
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
-        
   
       }
       .text_block::placeholder {
         color: #717171; /* Цвет плейсхолдера */
     }
       .close-button{
-
         padding-top: 3%;
         padding-right: 2%;
         width: auto;
@@ -156,36 +135,31 @@
       line-height: normal;
 
    }
+   .panel_part .lvl_define_block {
+    display: flex;
+    justify-content: center;
+   }
   }
   @media (max-width: 768px) {
     .panel_part .text_block {
       font-size: 16px;
     }
     .panel_part .lvl_define_block .lvl_define{
-
-      font-size: 14px;
-
+      font-size: 16px;
    }
    .panel_part .text-container{
     height: 68% !important;
    }
-   .panel_part .lvl_define_block {
-    display: flex;
-    justify-content: center;
-   }
+   
    .panel_part .lvl_define_block .lvl_define_arrow{
     display: none !important;
    }
 
   }
   @media (max-width: 550px){
-
     .panel_part .text-container{
       height: 62% !important;
      }
-
-    
-
   }
   @media (max-width: 425px) {
     .panel_part {
