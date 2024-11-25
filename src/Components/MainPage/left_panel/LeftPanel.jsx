@@ -13,8 +13,8 @@ export default function LeftPanel() {
   const [shake, setShake] = useState(false); // состояние анимации
   const [fullSizePanel, setFullSizePanel] = useState(false);
 
-  const { activeLvlButtons, setIsButtonPressed } = useAppContext(); // получаю из контекста 
-  const hasActiveButtonLvl = activeLvlButtons.some(button => button === true);
+  const { activeLvlButtons, setIsButtonPressed, setStartLvlText,hasActiveButtonLvl,setActiveLvlButtons } = useAppContext(); // получаю из контекста 
+
 
   // обновляю состояние текста
   const handleTextAreaChange = (event) => {
@@ -27,39 +27,43 @@ export default function LeftPanel() {
     setTimeout(() => {
       setTextHidden(false);
       setShowSvg(true);
+      setStartLvlText(null)
     }, 500);
   }, []);
 
   // слушатель textAreaValue
   useEffect(() => {
+    if (hasActiveButtonLvl){
+      setFullSizePanel(true)
+    }
     if (textAreaValue.trim() === "" && buttonText !== "Определить уровень текста") {
       resetButtonText();
     }
-  }, [textAreaValue, buttonText, resetButtonText]);
+  }, [textAreaValue, buttonText, resetButtonText, hasActiveButtonLvl]);
 
   const handleButtonClick = () => {
-    setFullSizePanel(true);
     setIsButtonPressed(true);
-
     if (textAreaValue.trim() === "") {
       setShake(true);
       setTimeout(() => setShake(false), 700);
       return;
-    }
-    if (hasActiveButtonLvl === false) { // не выбран уровень
-      setIsButtonPressed(true);
-      // возможна ошибка, быть аккуратнее
-    } else if (buttonText !== `Исходный уровень: ${"lvl"}` && hasActiveButtonLvl) {
+    }else if (buttonText !== `Исходный уровень: ${"lvl"}`) {
       // логика отправки текста на back
       // анимация изменения текста в кнопке
       setTextHidden(true);
       setShowSvg(false);
+      setStartLvlText("A1") // сюда передаю значение, которое возвращает модель
       setTimeout(() => {
         setButtonText(`Исходный уровень: ${"lvl"}`);
+        // ИСПРАВТЬ сделать глобал переменную
         setTextHidden(false);
       }, 500);
     }
   };
+  const closeButtonClick= ()=>{
+    setActiveLvlButtons()
+    return
+  }
 
   return (
     <div className='panel_part'>

@@ -3,25 +3,20 @@ import LvlButton from "./lvlButton";
 import { useAppContext } from "../AppContext";
 import { useState, useEffect } from "react";
 
+import copy from "../../../assets/copy.svg";
+
 export default function RightPanel() {
-    const { activeLvlButtons, isButtonPressed, setIsButtonPressed} = useAppContext();
-    const hasActiveButtonLvl = activeLvlButtons.some(button => button === true);
+    const { activeLvlButtons} = useAppContext();
+    
     const [showAdaptText,setShowAdaptText] = useState(false)
     const [shake, setShake] = useState(false); // состояние анимации
   
 
     useEffect(() => {
-      if (isButtonPressed){
-        setShowAdaptText(true)
-      }
-      if (!hasActiveButtonLvl && isButtonPressed) { // не выбран желаемый уровень, кнопки трясутся
-          setShake(true);
-          setTimeout(() => {
-              setShake(false);
-              setIsButtonPressed(false);
-          }, 700);
-      }
-  }, [hasActiveButtonLvl, isButtonPressed]);
+      const hasActiveButtonLvl = activeLvlButtons.some(button => button === true);
+      if (hasActiveButtonLvl){
+        setShowAdaptText(true)}}, 
+        [activeLvlButtons]);
   
 
     return (
@@ -31,7 +26,13 @@ export default function RightPanel() {
                     <div className="basic-text"style={{display: `${showAdaptText? "none": ""}`}}>Выберите уровень<br />для адаптации</div>
                     <div className='title' style={{display: `${showAdaptText? "": "none"}`}}>АДАПТИРОВАННЫЙ ТЕКСТ</div>
                     <div className='line' style={{display: `${showAdaptText? "": "none"}`}}></div>
-                    <div className="read-only" style={{height: `${showAdaptText? "70%": "33.5%"}`}}></div>
+                    <div className="text-container" style={{height: `${showAdaptText? "70%": "33.5%"}`}}>
+                      <div className="read-only" ></div>
+                      <button className="copy-button">
+                        <img src={copy} alt="" style={{display:`${showAdaptText? 'block':'none'}`}}/>
+                      </button>
+
+                    </div>
                     <div className={`buttons_block ${shake ? "shake" : ""}`}>
                         <LvlButton />
                     </div>

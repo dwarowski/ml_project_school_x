@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const AppContext = createContext();
 
@@ -6,7 +6,11 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => { 
     const [globalTextValue, setGlobalTextValue] = useState(""); // Исправлено имя переменной
     const [isButtonPressed, setIsButtonPressed] = useState(false);
-    const [activeLvlButtons, setActiveLvlButtons] = useState(Array(6).fill(false));
+    const [startLvlText,setStartLvlText] = useState(null) // начальный уровень текста
+    const [activeLvlButtons, setActiveLvlButtons] = useState(Array(6).fill(false));// массив из 6 положений кнопок
+
+    const [hasActiveButtonLvl, setHasActiveButtonLvl] = useState(false); //выбрана ли кнопка уровня?
+
 
     // Глобальная функция переключения активной кнопки
     const toggleButton = (index) => { 
@@ -17,6 +21,11 @@ export const AppProvider = ({ children }) => {
         });
     };
 
+    useEffect(() => { // проверяю, есть ли активная кнопка
+        const hasActiveButton = activeLvlButtons.some(button => button === true);
+        setHasActiveButtonLvl(hasActiveButton); // обновляем состояние
+    }, [activeLvlButtons]); // зависимость от activeLvlButtons
+
     return (
         <AppContext.Provider value={{ // функции и состояния, к которым смогут обращаться дочерние компоненты
           globalTextValue, 
@@ -24,7 +33,12 @@ export const AppProvider = ({ children }) => {
           isButtonPressed,
           setIsButtonPressed,
           activeLvlButtons,
-          toggleButton
+          setActiveLvlButtons,
+          toggleButton,
+          startLvlText,
+          setStartLvlText,
+          hasActiveButtonLvl,
+          setHasActiveButtonLvl
         }}>
           {children}
         </AppContext.Provider>
