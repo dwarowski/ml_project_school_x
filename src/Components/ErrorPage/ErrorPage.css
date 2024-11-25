@@ -6,3 +6,26 @@
     align-items: center;
     justify-content: center;
 }
+
+.error-contact-us-button{
+    width: 273px;
+    height: 60px;
+    background: #0F2450;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-contact-us-text{
+    font-size: 20px;
+    color:#F5F5F5;
+}
+
+.error-contact-us-button:hover{
+    background: #6a89cd;
+}
+
+.error-contact-us-button:hover .error-contact-us-text{
+    color:#F5F5F5;
+}
