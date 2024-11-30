@@ -1,44 +1,47 @@
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  
-    .icon{
-      background: #FFFF;
-      padding: 15px;
-      border-radius: 60px;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+
+  .icon {
+      background: #FFF;
+      padding: 1.5svh;
+      border-radius: 50%;
       cursor: pointer;
-    }
-    .func_block{
-      gap: 1.39svw;
+  }
+
+  .func_block {
       display: flex;
-      
-      .contacts{
-        padding: 15px;
-        width: 276px;
-        text-align: center;
-        color:#0F2450;
-        background: #FFFF;
-        border-radius: 60px;
-        font-size: 20px;
-        cursor: pointer;
-        text-decoration: none;
+      align-items: center;
+      gap: 2svh;
+
+      .contacts {
+          color: #0F2450;
+          background: #FFF;
+          padding: 1.5svh;
+          border-radius: 4svh;
+          font-family: 'Inter';
+          font-size: 20px;
+          font-weight: 500;
+          line-height: 26px;
+          text-align: left;
+          cursor: pointer;
+          text-decoration: none;
       }
-      .contacts-us-icon{
-        display: none;
-        width: 24px;
-        height: 24px;
-      }
-    
-    }
-  
   }
-  @media (max-width: 550px) {
-    .header .func_block .contacts {
-      display: none;
-    }
-    .header .func_block .contacts-us-icon{
-      display: block;
-      
-    }
+}
+
+@media (max-width: 550px) {
+  .header .func_block .contacts {
+      font-size: 12px;
+      padding: 0.5svh;
   }
+
+  .header .icon {
+      padding: 1svh;
+      height: 18px;
+      width: 18px;
+  }
+}

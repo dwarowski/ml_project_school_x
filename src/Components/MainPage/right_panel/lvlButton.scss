@@ -1,22 +1,16 @@
 .lvl-button {
     
-    background: #FFFFFF;
-    color: #717171;
-     border: #F5F5F5 solid 1px;
+    color: #0F2450;
+    background: #F5F5F5;
+    border: #F5F5F5 solid 1px;
     border-radius: 4svh;
     padding: 1svh 3svh;
-
-    
     font-family: Inter;
     font-size: 20px;
     font-weight: 500;
     line-height: 26px;
     text-align: center;
-
     box-sizing: border-box;
-   
-
-
     cursor: pointer;
     transition: background-color 0.3s;
     transition: color 0.3s;
@@ -30,12 +24,18 @@
         background: #0F2450;
         color: #F5F5F5;
     }
+    &.inactive{
+        background: #FFFFFF;
+        color: #717171;
+        cursor: not-allowed;
+    }
 }
 @media (max-width: 1024px) {
 
     .lvl-button {
         font-size: 16px;
         line-height: 22px;
+        
 
 
         
