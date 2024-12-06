@@ -22,11 +22,11 @@
   align-items: center;
   justify-content: space-between;
 }
-@media (max-width: 550px) {
+@media (max-width: 1024px) {
   .panel{
     flex-direction: column;
     gap: 5%;
-    height: 61% !important;
+    height: 81% !important;
   }
 
 }

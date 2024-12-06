@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import copy from "../../../assets/copy.svg";
 
 export default function RightPanel() {
-    const { activeLvlButtons} = useAppContext();
+    const { activeLvlButtons, startLvlText} = useAppContext();
     
     const [showAdaptText,setShowAdaptText] = useState(false)
     const [shake, setShake] = useState(false); // состояние анимации
@@ -23,7 +23,7 @@ export default function RightPanel() {
         <div className='panel_part'>
             <div className='fake_area'>
 
-                    <div className="basic-text"style={{display: `${showAdaptText? "none": ""}`}}>Выберите уровень<br />для адаптации</div>
+                    <div className="basic-text"style={{display: `${showAdaptText? "none": ""}`, color: `${startLvlText?'#0F2450':'#717171;'}`}}>Выберите уровень<br />для адаптации</div>
                     <div className='title' style={{display: `${showAdaptText? "": "none"}`}}>АДАПТИРОВАННЫЙ ТЕКСТ</div>
                     <div className='line' style={{display: `${showAdaptText? "": "none"}`}}></div>
                     <div className="read-container" style={{height: `${showAdaptText? "70%": "33.5%"}`}}>
