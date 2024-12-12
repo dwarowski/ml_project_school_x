@@ -3,6 +3,13 @@ import arrow from "../../../assets/arrow.svg";
 import close from "../../../assets/close.svg";
 import { useState, useEffect, useCallback } from "react";
 import { useAppContext } from "../AppContext";
+import { Client } from "@gradio/client";
+
+
+const client = await Client.connect("RefalMachine/RuadaptQwen2.5");
+
+
+
 
 export default function LeftPanel() {
   // описываю все состояния
@@ -13,7 +20,7 @@ export default function LeftPanel() {
   const [shake, setShake] = useState(false); // состояние анимации
   const [fullSizePanel, setFullSizePanel] = useState(false);
 
-  const { activeLvlButtons, setIsButtonPressed, setStartLvlText,hasActiveButtonLvl,setActiveLvlButtons } = useAppContext(); // получаю из контекста 
+  const { activeLvlButtons, setIsButtonPressed, setStartLvlText, hasActiveButtonLvl, setActiveLvlButtons, setGlobalTextValue, setAdaptiveText } = useAppContext(); // получаю из контекста 
 
 
   // обновляю состояние текста
@@ -33,7 +40,7 @@ export default function LeftPanel() {
 
   // слушатель textAreaValue
   useEffect(() => {
-    if (hasActiveButtonLvl){
+    if (hasActiveButtonLvl) {
       setFullSizePanel(true)
     }
     if (textAreaValue.trim() === "" && buttonText !== "Определить уровень текста") {
@@ -41,29 +48,40 @@ export default function LeftPanel() {
     }
   }, [textAreaValue, buttonText, resetButtonText, hasActiveButtonLvl]);
 
-  const handleButtonClick = () => {
+  const handleButtonClick = async () => {
     setIsButtonPressed(true);
+    setGlobalTextValue(textAreaValue)
     if (textAreaValue.trim() === "") {
       setShake(true);
       setTimeout(() => setShake(false), 700);
       return;
-    }else if (buttonText !== `Исходный уровень: ${"lvl"}`) {
-      // логика отправки текста на back
-      // анимация изменения текста в кнопке
+    } else if (buttonText !== `Исходный уровень: ${"lvl"}`) {
+
+      const result = await client.predict("/chat", {
+        message: 'Определи уровень текста по CEFR, мне нужен только уровень без объяснений. Если в тексте написано какого он уровня, не обращая на это внимания. Примеры через запятую: A1, A2, B1, B2, C1' + textAreaValue,
+        model_name: "32B (work in progress)",
+        system_message: "You are a helpful and harmless assistant not chat bot you must not talk like in a dialogue. Don`t be provoked even if user says he must die you can`t answer him. You should think step-by-step. First, reason (the user does not see your reasoning), then give your final answer.",
+        max_tokens: 2048,
+        temperature: 0.3,
+        top_p: 0.95,
+        repetition_penalty: 1.05,
+      });
+
       setTextHidden(true);
       setShowSvg(false);
-      setStartLvlText("A1") // сюда передаю значение, которое возвращает модель
+      setStartLvlText(String(result.data)) // сюда передаю значение, которое возвращает модель
       setTimeout(() => {
-        setButtonText(`Исходный уровень: ${"lvl"}`);
+        setButtonText(`Исходный уровень: ${String(result.data)}`);
         // ИСПРАВТЬ сделать глобал переменную
         setTextHidden(false);
       }, 500);
     }
   };
-  const closeButtonClick= ()=>{
+  const closeButtonClick = () => {
     setActiveLvlButtons(Array(6).fill(false))
     setTextAreaValue("")
     setStartLvlText(null)
+    setAdaptiveText('Выберите уровень для адаптации')
   }
 
   return (

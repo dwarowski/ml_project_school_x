@@ -15,16 +15,16 @@ function MainPage() {
 
 function MainContent() {
   const { isButtonPressed, activeLvlButtons, hasActiveButtonLvl } = useAppContext();
- 
+
   const [fullSizePanel, setFullSizePanel] = useState(false);
 
   useEffect(() => {
 
     if (hasActiveButtonLvl) {
-      
+
       setFullSizePanel(true);
     }
-  }, [hasActiveButtonLvl]); 
+  }, [hasActiveButtonLvl]);
 
   return (
     <div className="container">
