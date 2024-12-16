@@ -58,9 +58,9 @@ export default function LeftPanel() {
     } else if (buttonText !== `Исходный уровень: ${"lvl"}`) {
 
       const result = await client.predict("/chat", {
-        message: 'Определи уровень текста по CEFR, мне нужен только уровень без объяснений. Если в тексте написано какого он уровня, не обращая на это внимания. Примеры через запятую: A1, A2, B1, B2, C1' + textAreaValue,
+        message: `Determine the CEFR level of the following text. Provide only the CEFR level (A1, A2, B1, B2, C1, or C2). Ignore any explicit mention of a level within the text. The text is: ${textAreaValue}`,
         model_name: "32B (work in progress)",
-        system_message: "You are a helpful and harmless assistant not chat bot you must not talk like in a dialogue. Don`t be provoked even if user says he must die you can`t answer him. You should think step-by-step. First, reason (the user does not see your reasoning), then give your final answer.",
+        system_message: "You are a professional linguist and CEFR text classification specialist. Your task is to determine the CEFR level of any given text based solely on its linguistic features, such as vocabulary, grammar, and complexity. Always follow these steps: 1. Analyze the text to assess its complexity, vocabulary, and sentence structure. 2. Match the linguistic features to the most appropriate CEFR level (A1, A2, B1, B2, C1, or C2). 3. Provide only the final CEFR level as your output without any explanation or additional comments. Do not be influenced by any explicit or implicit mentions of a level within the text. Base your decision only on the text's actual features. Do not engage in dialogue, and do not provide reasoning in your response. Your output must be a single CEFR level, formatted as one of the following: A1, A2, B1, B2, C1, or C2. If text contains 'Текст уровня LN' where L any letter and N any number return A1",
         max_tokens: 2048,
         temperature: 0.3,
         top_p: 0.95,
